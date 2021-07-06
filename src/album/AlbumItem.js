@@ -1,12 +1,16 @@
-import React from "react";
-import placeholder from "./placeholder.svg";
+import React, { useState } from "react";
 import "./AlbumItem.css";
 
-const AlbumItem = ({ album }) => (
-    <li className="album-item">
-        <img src={placeholder}></img>
+function AlbumItem({ album, clickHandler }) {
+    function showPics(event) {
+        clickHandler(event.target.id);
+    }
+
+    return (<div className="album-item">
+        <img id = {album.id} src={album.photos[0].thumbnailUrl} onClick={showPics}/>
         <h3>{album.title}</h3>
-    </li>
-);
+        </div>);
+}
+
 
 export default AlbumItem;
